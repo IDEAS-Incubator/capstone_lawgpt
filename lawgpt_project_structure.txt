@@ -1,0 +1,81 @@
+# LawGPT Project Structure
+# This provides the file structure and guidance for implementing the LawGPT project
+
+# Project Root
+lawgpt/
+│
+├── .env                    # Environment variables (API keys, DB connection strings)
+│
+├── app.py                  # Main FastAPI application entry point
+│                           # - Initialize FastAPI app
+│                           # - Configure middleware
+│                           # - Include routers
+│
+├── requirements.txt        # Project dependencies
+│
+├── config/
+│   └── settings.py         # Application configuration and settings
+│                           # - Load environment variables
+│                           # - Configure logging
+│                           # - Set constants
+│
+├── api/
+│   ├── __init__.py
+│   ├── auth.py             # Authentication endpoints and logic
+│   │                       # - Implement login/token endpoints
+│   │                       # - JWT handling functions
+│   │                       # - User authentication middleware
+│   │
+│   ├── queries.py          # Query handling endpoints
+│   │                       # - Process legal queries
+│   │                       # - Call RAG system
+│   │                       # - Store conversation history
+│   │
+│   └── documents.py        # Document management endpoints
+│                           # - Upload and ingest documents
+│                           # - Process document chunks
+│
+├── models/
+│   ├── __init__.py
+│   ├── user.py             # User data models
+│   ├── conversation.py     # Conversation data models
+│   └── document.py         # Document data models
+│
+├── database/
+│   ├── __init__.py
+│   ├── mongodb.py          # MongoDB connection and operations
+│   │                       # - Initialize connection
+│   │                       # - CRUD operations for conversations/users
+│   │
+│   └── vectordb.py         # Vector database (Qdrant) operations
+│                           # - Initialize connection
+│                           # - Store/retrieve vectors
+│
+├── services/
+│   ├── __init__.py
+│   ├── llm_service.py      # LLM integration (Groq/LLAMA)
+│   │                       # - Generate AI responses
+│   │                       # - Format prompts
+│   │
+│   ├── embedding_service.py # Embedding generation (OLLAMA)
+│   │                        # - Generate embeddings for queries and documents
+│   │
+│   └── rag_service.py      # RAG implementation
+│                           # - Document retrieval
+│                           # - Context enrichment
+│
+├── utils/
+│   ├── __init__.py
+│   ├── text_processing.py  # Text preprocessing utilities
+│   │                       # - Document chunking
+│   │                       # - Text cleaning
+│   │
+│   └── security.py         # Security utilities
+│                           # - Password hashing
+│                           # - Token validation
+│
+└── tests/                  # Unit and integration tests
+    ├── __init__.py
+    ├── test_api.py         # API endpoint tests
+    ├── test_rag.py         # RAG system tests
+    └── test_auth.py        # Authentication tests
