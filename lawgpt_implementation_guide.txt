@@ -1,0 +1,94 @@
+# LawGPT Implementation Guide
+
+This guide outlines the key components students should implement for the LawGPT project.
+
+## 1. Authentication System
+
+Students should implement:
+- User registration with password hashing (don't store plaintext passwords)
+- JWT token generation and validation
+- Role-based access control
+
+Example implementation for `auth.py`:
+```python
+# Implement JWT token generation
+# Implement user authentication
+# Implement password hashing
+```
+
+## 2. RAG System Implementation
+
+The core of the project is the RAG (Retrieval-Augmented Generation) system:
+
+1. Document processing:
+   - Split documents into chunks
+   - Generate embeddings for each chunk
+   - Store in Qdrant with metadata
+
+2. Query processing:
+   - Generate embeddings for user query
+   - Retrieve relevant document chunks
+   - Format prompt with retrieved context
+   - Send to LLM for response generation
+
+Example implementation for `rag_service.py`:
+```python
+# Implement document retrieval
+# Implement context enrichment
+# Implement response generation with sources
+```
+
+## 3. Database Integration
+
+MongoDB will store:
+- User information
+- Conversation history
+
+Qdrant will store:
+- Document embeddings
+- Document metadata
+
+Example implementation for database connections:
+```python
+# Initialize MongoDB connection
+# Initialize Qdrant connection
+# Implement CRUD operations
+```
+
+## 4. API Endpoints
+
+Key endpoints to implement:
+- `/register`: User registration
+- `/token`: Authentication
+- `/query`: Process legal queries
+- `/ingest`: Document ingestion
+
+## 5. LLM Integration
+
+Students should implement:
+- Connection to Groq/LLAMA for inference
+- Prompt engineering for legal context
+- Response parsing and formatting
+
+Example implementation:
+```python
+# Connect to LLM API
+# Format prompt with context
+# Parse and structure response
+```
+
+## 6. Document Ingestion Pipeline
+
+Students should implement:
+1. Document parsing and cleaning
+2. Chunking strategy for legal documents
+3. Embedding generation with OLLAMA
+4. Storage in vector database
+
+## 7. Deployment Preparation
+
+Prepare for deployment:
+- Containerization with Docker
+- Environment variable configuration
+- Process management with PM2
+- Logging implementation
